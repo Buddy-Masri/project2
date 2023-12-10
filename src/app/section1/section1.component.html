@@ -1,0 +1,13 @@
+<div>
+<h1>{{ 1 | append : 90000 }}</h1>
+<ul>
+  <li *ngFor="let loop of arrayz let i = index">{{ loop.postTitle }}
+    <button (click)="fx6(i)">Delete</button>
+  </li>
+</ul>
+<button (click)="fx4()">Add New</button>
+</div>
+
+
+
+ 

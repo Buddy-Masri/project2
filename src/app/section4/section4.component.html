@@ -1,0 +1,317 @@
+<!-- <div class="container mt-5">
+  <h1>Reactive Form</h1>
+  <div class="form-area">
+    <form [formGroup]="form" (submit)="fx7(form)">
+      <div class="form-group">
+        <label> First Name </label>
+        <input
+          type="text"
+          placeholder="Full name"
+          class="form-control"
+          formControlName="name"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid':  name.touched &&  name.invalid
+          }"
+        />
+      </div>
+      <div *ngIf=" name.errors">
+        <div
+          class="alert alert-danger"
+          *ngIf=" name.touched && ! name.value"
+        >
+          Name is Required
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf=" name.errors.minlength &&  name.touched"
+        >
+          Name should be 5 characters at least
+        </div>
+      </div>
+      <div class="form-group">
+        <label> Email </label>
+        <input
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          [ngClass]="{
+            'form-control': true,
+            ' is-invalid':  email.touched &&  email.invalid
+          }"
+        />
+      </div>
+      <div *ngIf=" email.errors">
+        <div
+          class="alert alert-danger"
+          *ngIf=" email.touched && ! email.value &&  email.invalid"
+        >
+          Email is Required
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf=" email.errors.email &&  email.touched"
+        >
+          Invalid Email Address
+        </div>
+      </div>
+
+      <div formGroupName="contactInfo">
+        <div class="form-group">
+          <label> Address </label>
+          <textarea
+            cols="30"
+            rows="3"
+            placeholder="Address"
+            formControlName="address"
+            [ngClass]="{
+              'form-control': true,
+              ' is-invalid':  address.touched &&  address.invalid
+            }"
+          ></textarea>
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="
+             address.touched && ! address.value &&  address.invalid
+          "
+        >
+          Address is Required
+        </div>
+        <div class="form-group">
+          <label> Shipping Address </label>
+          <textarea
+            cols="30"
+            rows="3"
+            placeholder="Shipping Address"
+            formControlName="shippingAddress"
+            [ngClass]="{
+              'form-control': true,
+              ' is-invalid':
+                 shippingAddress.touched &&  shippingAddress.invalid
+            }"
+          ></textarea>
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="
+             shippingAddress.touched &&
+            ! shippingAddress.value &&
+             shippingAddress.invalid
+          "
+        >
+          Shipping Address is Required
+        </div>
+        <div class="form-group">
+          <label> Phone Number </label>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            formControlName="contactNo"
+            [ngClass]="{
+              'form-control': true,
+              ' is-invalid':  contactNo.touched &&  contactNo.invalid
+            }"
+          />
+        </div>
+        <div *ngIf=" contactNo.errors">
+          <div
+            class="alert alert-danger"
+            *ngIf="
+               contactNo.touched &&
+              ! contactNo.value &&
+               contactNo.invalid
+            "
+          >
+            Phone Number is Required
+          </div>
+          <div class="alert alert-danger" *ngIf=" contactNo.errors.pattern">
+            Invalid Phone Number
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label> Skills </label>
+        <input
+          type="text"
+          placeholder="Skills"
+          formArrayName="skills"
+          #skl
+          (keyup.enter)="fx9(skl)"
+          [ngClass]="{
+            'form-control': true,
+            ' is-invalid':  email.touched &&  email.invalid
+          }"
+        />
+      </div>
+      <ul class="form-group">
+        <li
+          class="list-group-item"
+          *ngFor="let loop of  skills.value; let i = index"
+        >
+          <a (click)="fx10(i)" class="btn btn-sm btn-danger">x</a>
+          {{ loop }}
+        </li>
+      </ul>
+
+      <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  </div>
+</div> -->
+
+<div class="container mt-5">
+  <h1>Reactive Form</h1>
+  <div class="form-area">
+    <form [formGroup]="form" (submit)="fx7(form)">
+      <div class="form-group">
+        <label> Username </label>
+        <input
+          type="text"
+          placeholder="Username"
+          class="form-control"
+          formControlName="Username"
+          [ngClass]="{
+            'form-control': true,
+            'is-invalid': fctr.Username.touched && fctr.Username.invalid
+          }"
+        />
+      </div>
+      <div *ngIf="fctr.Username.errors">
+        <div
+          class="alert alert-danger"
+          *ngIf="fctr.Username.touched && !fctr.Username.value"
+        >
+          Name is Required
+        </div>
+        <div class="alert alert-danger" *ngIf="fctr.Username.errors.minlength">
+          Name should be 5 characters at least
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="fctr.Username.errors.noSpaceValidator"
+        >
+          No Spaces Allowed
+        </div>
+      </div>
+      <div class="form-group">
+        <label> Email </label>
+        <input
+          type="email"
+          placeholder="Email"
+          formControlName="email"
+          [ngClass]="{
+            'form-control': true,
+            ' is-invalid': fctr.email.touched && fctr.email.invalid
+          }"
+        />
+      </div>
+      <div *ngIf="fctr.email.errors">
+        <div
+          class="alert alert-danger"
+          *ngIf="fctr.email.touched && !fctr.email.value && fctr.email.invalid"
+        >
+          Email is Required
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="fctr.email.errors.email && fctr.email"
+        >
+          Invalid Email Address
+        </div>
+      </div>
+
+      <div formGroupName="contactInfo">
+        <div class="form-group">
+          <label> Address </label>
+          <textarea
+            cols="30"
+            rows="3"
+            placeholder="Address"
+            formControlName="address"
+            [ngClass]="{
+              'form-control': true,
+              ' is-invalid': adrs.touched && !adrs.value && adrs.invalid
+            }"
+          ></textarea>
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="adrs.touched && !adrs.value && adrs.invalid"
+        >
+          Address is Required
+        </div>
+        <div class="form-group">
+          <label> Shipping Address </label>
+          <textarea
+            cols="30"
+            rows="3"
+            placeholder="Shipping Address"
+            formControlName="shippingAddress"
+            [ngClass]="{
+              'form-control': true,
+              ' is-invalid': shpAdrs.touched && shpAdrs.invalid
+            }"
+          ></textarea>
+        </div>
+        <div
+          class="alert alert-danger"
+          *ngIf="shpAdrs.touched && !shpAdrs.value && shpAdrs.invalid"
+        >
+          Shipping Address is Required
+        </div>
+        <div class="form-group">
+          <label> Phone Number </label>
+          <input
+            type="text"
+            placeholder="Phone Number"
+            formControlName="contactNo"
+            [ngClass]="{
+              'form-control': true,
+              ' is-invalid': cntcttNo.touched && cntcttNo.invalid
+            }"
+          />
+        </div>
+        <div *ngIf="cntcttNo.errors">
+          <div
+            class="alert alert-danger"
+            *ngIf="cntcttNo.touched && !cntcttNo.value && cntcttNo.invalid"
+          >
+            Phone Number is Required
+          </div>
+          <div class="alert alert-danger" *ngIf="cntcttNo.errors.pattern">
+            Invalid Phone Number
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label> Skills </label>
+        <input
+          type="text"
+          placeholder="Skills"
+          formArrayName="skills"
+          #skl
+          (keyup.enter)="fx9(skl)"
+          [ngClass]="{
+            'form-control': true,
+            ' is-invalid': fctr.skills && fctr.skills.invalid
+          }"
+        />
+      </div>
+      <ul class="form-group">
+        <li
+          class="list-group-item"
+          *ngFor="let loop of fctr.skills.value; let i = index"
+        >
+          <a (click)="fx10(i)" class="btn btn-sm btn-danger">x</a>
+          {{ loop }}
+        </li>
+      </ul>
+
+      <button [disabled]="form.invalid" type="submit" class="btn btn-primary">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>
